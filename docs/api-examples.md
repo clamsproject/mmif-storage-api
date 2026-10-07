@@ -145,7 +145,7 @@ The default is to not overwrite an older file if there was one, use the overwrit
 curl -X POST 'http://127.0.0.1:8000/upload?overwrite=true' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
-  -F 'file=@data/cpb-aacip-f551104e446-clip1.mmif'
+  -F 'file=@tests/cpb-aacip-f551104e446-clip1.mmif'
 ```
 
 

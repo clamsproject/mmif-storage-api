@@ -11,14 +11,18 @@ def environment(request):
     """Create the test storage directory and set the storage directory in the 
     storage configuration."""
     shutil.rmtree(locations.storage_test, ignore_errors=True)
+    mmif_storage.create_storage_example(target_dir=locations.storage_test)
     mmif_storage.config.MMIF_STORAGE_DIR = locations.storage_test
-    copy_files(locations.file_list, locations.storage_source, locations.storage_test)
+    #copy_files(locations.file_list, locations.storage_source, locations.storage_test)
     yield locations
 
 
 def copy_files(file_list: str, indir: str, outdir: str):
     """Copy a list of file paths in a file from one directory to the other,
-    preserving the paths.""" 
+    preserving the paths."""
+    # TODO. This function is now not needed anymore with the change in the fixture
+    # above, but keeping it around for a little. Also see config.py for some related
+    # changes
     with open(file_list) as fh:
         for line in fh:
             line = line.strip()

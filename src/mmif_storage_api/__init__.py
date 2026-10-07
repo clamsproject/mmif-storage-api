@@ -56,13 +56,6 @@ def parse_arguments(api=True) -> argparse.Namespace:
         '--host',type=str, default=host, help=f'host name, default is {host}')
     argparser.add_argument(
         '--port', type=int, default=port, help=f"port number, default is {port}")
-    # NOTE. There used to be a --debug option, but it was disabled for two reasons.
-    # Most importantly, when running in debug mode the auto-reload loop breaks in
-    # the sense that the restart ignores your original command line arguments so it
-    # reverts to defaults. There are ways around this (the recommended fix is to
-    # use environment variables, which I did not want to do). The other reason is
-    # that we do not really need a debug mode when starting the API and browser as
-    # done by start_api() and start_www().
     args = argparser.parse_args(sys.argv[1:])
     if not Path(args.dir).is_dir():
         exit(f'Directory "{args.dir}" does not exist, exiting...')
@@ -73,8 +66,6 @@ def start_api():
     from mmif_storage_api.api import app as api_app
     args = parse_arguments(api=True)
     config.MMIF_STORAGE_DIR = args.dir
-    print('>>>', args)
-    
     uvicorn.run("mmif_storage_api.api:app", host=args.host, port=args.port)
 
 

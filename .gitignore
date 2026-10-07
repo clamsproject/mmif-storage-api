@@ -1,0 +1,16 @@
+*.py~
+.DS_Store
+__pycache__
+find.sh
+backup.sh
+.env
+venv*
+build
+dist
+src/mmif_storage*.egg-info
+storage-response*
+tmp*
+*desc.json
+*summ.json
+data/storage-example
+tmp-*

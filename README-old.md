@@ -1,20 +1,6 @@
 # MMIF Storage
 
-Code to interact with a set of MMIF files. You can use this package to run a FastAPI web service, run a Flask web server, or directly interact with the MMIF data from Python. The required Python version is 3.12 or higher.
-
-MMIF files are stored by saving them in paths that reflect how the file was generated, that is, the path reflects the processing steps involved in creating the file. Each step in the file-creation workflow has three components:
-
-1. The name of the CLAMS application.
-2. The version of the application.
-3. A hash value reflecting value created from the parameter dictionary used when running the application.
-
-Each of these will be reflected in the path to the MMIF file created under those conditions. For example, running swt-detection version v8.6 with no parameters as a first processing step and adding the resulting file to the storage generates the following path (where the hash value is the one you get when parameter dictionary is empty):
-
-```
-swt-detection/v8.6/d41d8cd98f00b204e9800998ecf8427e
-```
-
-See the [data/storage-example](https://github.com/clamsproject/mmif-storage/tree/v0.2.0.rc3/data/storage-example) directory for a small example storage directory which contains two files that were processed by two CLAMS apps.
+Code to interact with a set of MMIF files. You can use this package to run a FastAPI web service or a Flask web server, it is built upon the Python interface to MMIF files at [https://github.com/clamsproject/mmif-storage](https://github.com/clamsproject/mmif-storage), see the README file in that repository for a short description of what a MMIF Storage directory looks like. The required Python version is 3.12 or higher.
 
 
 ### Web API
@@ -97,6 +83,25 @@ The third example is to retrieve a MMIF file. We can use the peek results to ext
 >>> print(len(result)
 35349
 ```
+
+
+### Containerization
+
+Here we also assume that we have access to the source code.
+
+Use Docker or Podman to build the image:
+
+```bash
+docker build -f Containerfile -t mmif-storage:0.2.0.rc3 .
+```
+
+Starting the container:
+
+```bash
+docker run --rm -d -v $PWD/data/storage-example:/data -p 8000:8000 mmif-storage:0.2.0.rc3
+```
+
+This assumes that we run this command from the top-level of the `mmif-storage` directory and therefore the container will use the mini example storage. It is the responsibilty of the developer to replace `$PWD/data/storage-example` with the path to the needed MMIF Storage directory. Also, the developer may have to replace the first port in the port mapping depending on local circumstances.
 
 
 ## Developer Notes

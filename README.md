@@ -2,10 +2,9 @@
 
 Starting repository for api code separated out from mmif-storage.
 
-To work with this first install the mmif storage archive in the packages directory and then do a local editable install of this repo:
+To work with this do a local editable install of this repo:
 
 ```bash
-pip install packages/mmif_storage_mv-0.2.0rc5.tar.gz
 pip install -e .[dev]
 ```
 

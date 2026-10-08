@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mmif-storage-api-mv"
-version = "0.0.1"
+version = "0.1.0.rc1"
 description = "Tool to manage MMIF files."
 readme = "README.md"
 license = "Apache-2.0"
@@ -19,12 +19,11 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14"]
 dependencies = [
+    "mmif-storage==0.2.0",
 	"python-dotenv==1.*",
 	"fastapi[standard]==0.141.*",
 	"flask==3.1.*",
-	"gunicorn==26.*",
-	"mmif-python==1.4.*",
-	"clams_utils"]
+	"gunicorn==26.*"]
 
 [project.optional-dependencies]
 dev = ["pytest==9.*"]

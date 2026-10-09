@@ -4,7 +4,7 @@ This goes into a little more detail then what you get in the SwaggerUI automatic
 
 We are assuming that that the MMIF Storage API is up and running on port 8000, and that it is using the example data in `data/storage-example` (which the sample environment file points at).
 
-All examples are using curl invocation. If an output is given then it is pretty printed, which in real life you won't get unless you pipe the output through something like the jq utility.
+All examples are using curl invocations. If an output is given then it is pretty printed, which in real life you won't get unless you pipe the output through something like the jq utility.
 
 [ <a href=#analytics>analytics</a>
 | <a href=#peeking>peeking</a>
@@ -115,13 +115,13 @@ If you use SwaggerUI you can also simply enter the following:
 
 ## File upload
 
-In this case (unlike with the other examples) you need to be in the root directory of the repository for it to work since there is a file path in the curl command.
+In this case (unlike with the other examples) you need to be in the root directory of the repository since there is a file path in the curl command.
 
 ```bash
 curl -X POST 'http://127.0.0.1:8000/upload' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
-  -F 'file=@data/cpb-aacip-f551104e446-clip1.mmif'
+  -F 'file=@tests/cpb-aacip-f551104e446-clip1.mmif'
 ```
 ```json
 {
@@ -145,7 +145,7 @@ The default is to not overwrite an older file if there was one, use the overwrit
 curl -X POST 'http://127.0.0.1:8000/upload?overwrite=true' \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
-  -F 'file=@data/cpb-aacip-f551104e446-clip1.mmif'
+  -F 'file=@tests/cpb-aacip-f551104e446-clip1.mmif'
 ```
 
 

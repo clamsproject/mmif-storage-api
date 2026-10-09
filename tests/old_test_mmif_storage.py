@@ -1,7 +1,7 @@
 """
 
 This is the old testing file from the aapb-brandeis-datahousing repository, where
-it is not useful anymore because it is not focussed on assets only and this code
+it is not useful anymore because it is now focussed on assets only and this code
 only tests MMIF files.
 
 It is added here as a reference because some of the tests here could be useful and

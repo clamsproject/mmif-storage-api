@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mmif-storage-api-mv"
-version = "0.1.0.rc1"
+name = "mmif-storage-api"
+version = "0.1.0"
 description = "Tool to manage MMIF files."
 readme = "README.md"
 license = "Apache-2.0"
@@ -37,14 +37,15 @@ homepage = "https://clams.ai"
 source = "https://github.com/clamsproject/mmif-storage-api"
 
 [tool.setuptools]
-include-package-data = false
+include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["./src"]
 
 [tool.setuptools.package-data]
-mmif_storage = ["templates/*", "static/*", "static/**/*"]
+mmif_storage_api = ["templates/*.html", "static/js/*.js", "static/css/*.css"]
 
 [tool.pytest]
 testpaths = ["tests"]
 pythonpath = ["src"]
+

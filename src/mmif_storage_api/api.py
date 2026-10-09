@@ -17,6 +17,7 @@ import os
 import io
 import textwrap
 from typing import Dict, List, Any
+from dotenv import load_dotenv
 
 from pydantic import BaseModel, ConfigDict
 from fastapi import FastAPI, File, UploadFile
@@ -25,8 +26,12 @@ from fastapi.responses import StreamingResponse, PlainTextResponse
 from mmif import View
 
 import mmif_storage
-from mmif_storage import storage, analytics
+from mmif_storage import config, storage, analytics
 from mmif_storage.errors import DownloadWarning, FileExistsWarning
+
+
+load_dotenv()
+config.MMIF_STORAGE_DIR = os.environ.get('MMIF_STORAGE_DIR')
 
 
 app = FastAPI()
